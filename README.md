@@ -180,12 +180,12 @@ type Widget struct {
 ## SQL
 
 `Color` implements `driver.Valuer` and `sql.Scanner`.  
-The database value is a `#RRGGBB` hex string.
+The database value is a `#RRGGBBAA` hex string.
 
 ```go
 var c color.Color
-row.Scan(&c)           // reads "#FF0000" → color.Red
-db.Exec("...", c)      // stores "#FF0000"
+row.Scan(&c)           // reads "#FF0000FF" → color.Red
+db.Exec("...", c)      // stores "#FF0000FF"
 ```
 
 ## License
