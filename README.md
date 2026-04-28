@@ -25,7 +25,7 @@ Over 140 named constants are provided, matching the standard .NET / CSS named-co
 
 | Color | Hex | Color | Hex | Color | Hex |
 |:------|:----|:------|:----|:------|:----|
-| Transparent ¹ | `#FFFFFFFF` | <img src="doc/colors/AliceBlue.png" height="16" style="vertical-align:middle"> AliceBlue | `#FFF0F8FF` | <img src="doc/colors/AntiqueWhite.png" height="16" style="vertical-align:middle"> AntiqueWhite | `#FFFAEBD7` |
+| Transparent ¹ | `#00FFFFFF` | <img src="doc/colors/AliceBlue.png" height="16" style="vertical-align:middle"> AliceBlue | `#FFF0F8FF` | <img src="doc/colors/AntiqueWhite.png" height="16" style="vertical-align:middle"> AntiqueWhite | `#FFFAEBD7` |
 | <img src="doc/colors/Aqua.png" height="16" style="vertical-align:middle"> Aqua | `#FF00FFFF` | <img src="doc/colors/Aquamarine.png" height="16" style="vertical-align:middle"> Aquamarine | `#FF7FFFD4` | <img src="doc/colors/Azure.png" height="16" style="vertical-align:middle"> Azure | `#FFF0FFFF` |
 | <img src="doc/colors/Beige.png" height="16" style="vertical-align:middle"> Beige | `#FFF5F5DC` | <img src="doc/colors/Bisque.png" height="16" style="vertical-align:middle"> Bisque | `#FFFFE4C4` | <img src="doc/colors/Black.png" height="16" style="vertical-align:middle"> Black | `#FF000000` |
 | <img src="doc/colors/BlanchedAlmond.png" height="16" style="vertical-align:middle"> BlanchedAlmond | `#FFFFEBCD` | <img src="doc/colors/Blue.png" height="16" style="vertical-align:middle"> Blue | `#FF0000FF` | <img src="doc/colors/BlueViolet.png" height="16" style="vertical-align:middle"> BlueViolet | `#FF8A2BE2` |
@@ -89,15 +89,17 @@ c  = color.Transparent      // 0x00FFFFFF
 
 ```go
 c := color.FromRGB(255, 0, 0)                  // fully opaque red
-c  = color.FromARGB(128, 255, 0, 0)            // semi-transparent red
-c  = color.FromRGBA(255, 0, 0, 128)            // same, RGBA argument order
+c = color.FromARGB(128, 255, 0, 0)             // semi-transparent red
+c = color.FromRGBA(255, 0, 0, 128)             // same, RGBA argument order
 ```
 
 ### From HSL / HSLA components
 
 ```go
-c, err := color.FromHSL(0, 1.0, 0.5)          // red  (hue=0°, sat=100%, light=50%)
-c, err  = color.FromHSLA(120, 1.0, 0.5, 255)  // fully opaque green
+c, err := color.FromHSL(0, 1.0, 0.5)           // red  (hue=0°, sat=100%, light=50%)
+c, err = color.FromHSLA(120, 1.0, 0.5, 255)    // fully opaque green
+c = color.MustHSL(0, 1.0, 0.5)                 // red  (hue=0°, sat=100%, light=50%)
+c = color.MustHSLA(120, 1.0, 0.5, 255)         // fully opaque green
 ```
 
 `hue` must be in **[0, 360)**, `saturation` and `lightness` must be in **[0, 1]**.
